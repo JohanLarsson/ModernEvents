@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="ModernEvents.Page2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:modernEvents="clr-namespace:ModernEvents"
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <modernEvents:NavigatingTab SelectedSource="Content1.xaml">
+        <modernEvents:NavigatingTab.Links>
+            <mui:Link DisplayName="Content 1" Source="Content1.xaml" />
+            <mui:Link DisplayName="Content 2" Source="Content2.xaml" />
+        </modernEvents:NavigatingTab.Links>
+    </modernEvents:NavigatingTab>
+</UserControl>
