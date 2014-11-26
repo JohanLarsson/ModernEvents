@@ -54,8 +54,12 @@
         private static void OnSelectedSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             var navigatingTab = ((NavigatingTab)o);
+            if (e.NewValue == null)
+            {
+                navigatingTab.SelectedSource = (Uri) e.OldValue;
+                return;
+            }
             var args = new TabNavigatedEventArgs(navigatingTab, (Uri) e.OldValue, (Uri) e.NewValue);
-
             navigatingTab.OnNavigated(args);
         }
 
@@ -67,7 +71,7 @@
             navigatingTab.OnNavigating(args);
             if (args.Cancel)
             {
-                return navigatingTab.SelectedSource;
+                return null;
             }
             return baseValue;
         }
