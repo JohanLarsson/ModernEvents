@@ -1,10 +1,8 @@
-﻿namespace ModernEvents
+﻿namespace ModernEventsBox
 {
     using System;
     using System.Windows;
-    using FirstFloor.ModernUI.Presentation;
     using FirstFloor.ModernUI.Windows.Controls;
-    using FirstFloor.ModernUI.Windows.Navigation;
 
     public class NavigatingTab : ModernTab
     {
@@ -32,8 +30,8 @@
         /// Occurs when navigation to new content has completed.
         /// 
         /// </summary>
-        public event EventHandler<TabNavigatedEventArgs> Navigated;
-       
+        public event EventHandler<TabNavigationEventArgs> Navigated;
+
         protected virtual void OnNavigating(TabNavigationCanceledEventArgs e)
         {
             var handler = Navigating;
@@ -41,37 +39,43 @@
             {
                 handler(this, e);
             }
+            ModernEvents.OnNavigating(this, e);
         }
 
-        protected virtual void OnNavigated(TabNavigatedEventArgs e)
+        protected virtual void OnNavigated(TabNavigationEventArgs e)
         {
             var handler = Navigated;
             if (handler != null)
             {
                 handler(this, e);
             }
+            ModernEvents.OnNavigated(this, e);
         }
+
         private static void OnSelectedSourceChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
-            var navigatingTab = ((NavigatingTab)o);
-            if (e.NewValue == null)
+            if (Equals(e.NewValue, e.OldValue))
             {
-                navigatingTab.SelectedSource = (Uri) e.OldValue;
                 return;
             }
-            var args = new TabNavigatedEventArgs(navigatingTab, (Uri) e.OldValue, (Uri) e.NewValue);
+            var navigatingTab = ((NavigatingTab)o);
+            var args = new TabNavigationEventArgs(navigatingTab, (Uri)e.OldValue, (Uri)e.NewValue);
             navigatingTab.OnNavigated(args);
         }
 
         private static object CoerceSelectedSourceChanged(DependencyObject o, object baseValue)
         {
             var navigatingTab = ((NavigatingTab)o);
-            var args = new TabNavigationCanceledEventArgs(navigatingTab, (Uri) baseValue);
+            if (Equals(baseValue, navigatingTab.SelectedSource))
+            {
+                return baseValue;
+            }
+            var args = new TabNavigationCanceledEventArgs(navigatingTab, (Uri)baseValue);
 
             navigatingTab.OnNavigating(args);
             if (args.Cancel)
             {
-                return null;
+                return navigatingTab.SelectedSource;
             }
             return baseValue;
         }

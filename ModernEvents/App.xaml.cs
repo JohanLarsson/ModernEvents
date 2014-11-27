@@ -1,4 +1,4 @@
-﻿namespace ModernEvents
+﻿namespace ModernEventsBox
 {
     using System.Windows;
     using System.Windows.Navigation;

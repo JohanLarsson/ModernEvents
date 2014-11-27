@@ -1,4 +1,4 @@
-﻿namespace ModernEvents
+﻿namespace ModernEventsBox
 {
     using System.Windows.Controls;
 
@@ -10,6 +10,7 @@
         public Content2()
         {
             InitializeComponent();
+            DataContext = Vm.Instance;
         }
     }
 }

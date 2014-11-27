@@ -1,4 +1,4 @@
-﻿namespace ModernEvents
+﻿namespace ModernEventsBox
 {
     using System.Windows;
     using FirstFloor.ModernUI.Windows.Controls;
@@ -13,11 +13,10 @@
         public MainWindow()
         {
             InitializeComponent();
-            var navigator = NotifyingNavigator.Instance;
-            LinkNavigator = navigator;
-            navigator.Navigating += (sender, args) =>
+            LinkNavigator = new NotifyingNavigator();
+            ModernEvents.Navigating += (sender, args) =>
             {
-                if (count%3 == 0)
+                if (count % 3 == 0)
                 {
                     var tabNavigationCanceledEventArgs = args as TabNavigationCanceledEventArgs;
                     if (tabNavigationCanceledEventArgs != null)
@@ -29,12 +28,13 @@
                     {
                         navigatingCancelEventArgs.Cancel = true;
                     }
-                    MessageBox.Show("Not navigating this time");
                 }
+                Vm.Instance.Navigatings.Insert(0, args);
+
                 count++;
             };
 
-            navigator.NavigationFailed += (sender, args) => MessageBox.Show(args.Error.Message);
+            ModernEvents.NavigationFailed += (sender, args) => MessageBox.Show(args.Error.Message);
         }
     }
 }

@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernEvents", "ModernEvents\ModernEvents.csproj", "{FAA3BBEF-E717-4ABA-9186-E0ED5F37A294}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModernEventsBox.Tests", "ModernEventsBox.Tests\ModernEventsBox.Tests.csproj", "{57A854E0-A2F6-41EE-A0C4-CC0BB7484D92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FAA3BBEF-E717-4ABA-9186-E0ED5F37A294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAA3BBEF-E717-4ABA-9186-E0ED5F37A294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAA3BBEF-E717-4ABA-9186-E0ED5F37A294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A854E0-A2F6-41EE-A0C4-CC0BB7484D92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A854E0-A2F6-41EE-A0C4-CC0BB7484D92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A854E0-A2F6-41EE-A0C4-CC0BB7484D92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A854E0-A2F6-41EE-A0C4-CC0BB7484D92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

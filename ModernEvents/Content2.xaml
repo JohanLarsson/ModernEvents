@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="ModernEvents.Content2"
+﻿<UserControl x:Class="ModernEventsBox.Content2"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,8 @@
              d:DesignHeight="300"
              d:DesignWidth="300"
              mc:Ignorable="d">
-    <Grid>
-        <TextBlock Text="Content2" />
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Content 2" />
+        <ContentPresenter Content="{Binding}" />
+    </StackPanel>
 </UserControl>

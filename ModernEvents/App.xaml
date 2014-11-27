@@ -1,6 +1,7 @@
-﻿<Application x:Class="ModernEvents.App"
+﻿<Application x:Class="ModernEventsBox.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:modernEventsBox="clr-namespace:ModernEventsBox"
              xmlns:mui="http://firstfloorsoftware.com/ModernUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
@@ -9,7 +10,17 @@
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.xaml" />
                 <ResourceDictionary Source="/FirstFloor.ModernUI;component/Assets/ModernUI.Light.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            <DataTemplate DataType="{x:Type modernEventsBox:Vm}">
+                <ListBox ItemsSource="{Binding Navigatings}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type modernEventsBox:TabNavigationCanceledEventArgs}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Cancel, StringFormat='Canceled: {0}'}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
